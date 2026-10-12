@@ -2,8 +2,8 @@
 MFAA -- Multi-Factor Adaptive Allocation.
 
 A defensive, long-only, monthly, price-only multi-asset ETF framework built from
-factors published before 2020 (cross-sectional 13612 momentum + ensembled trend
-following + canary crash overlay + inverse-vol weighting + vol targeting), packaged
+published factors, nearly all pre-2020 (cross-sectional 13612 momentum + ensembled
+trend following + canary crash overlay + inverse-vol weighting + vol targeting), packaged
 with an honest anti-overfitting research harness (fixed neutral prior, Deflated
 Sharpe Ratio, bootstrap CI, crisis table, tearsheet).
 

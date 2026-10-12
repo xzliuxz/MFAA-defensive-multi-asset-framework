@@ -3,8 +3,9 @@
 MFAA -- Multi-Factor Adaptive Allocation (defensive multi-asset framework).
 
 A price-only, long-only multi-asset strategy whose rules and parameters are all
-fixed ex-ante from research published before 2020 (see docs/methodology.md
-for sources and the anti-overfitting protocol). Design goal: a *defensive*
+fixed ex-ante from published research -- pre-2020 except the BAA (2022) canary and
+defensive-pool elements (see docs/methodology.md for sources, caveats and the
+anti-overfitting protocol). Design goal: a *defensive*
 allocation -- roughly half the volatility and drawdown of equities, low beta,
 positive risk-managed carry -- not a return-maximiser.
 

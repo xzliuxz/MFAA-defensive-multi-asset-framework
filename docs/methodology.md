@@ -1,12 +1,12 @@
 # MFAA Methodology & Anti-Overfitting Protocol
 
-*Last updated: 2026-07-07*
+*Last updated: 2026-10-12*
 
 This document specifies the **MFAA (Multi-Factor Adaptive Allocation)** framework
-— every rule, parameter and its pre-2020 literature source — and defines the
-anti-overfitting protocol used to produce the headline 2020→present result. The
-guiding principle throughout: **nothing about the strategy was chosen by looking
-at post-2020 data.**
+— every rule, parameter and its literature source (all pre-2020 except two
+BAA-derived components; see the caveats) — and defines the anti-overfitting
+protocol used to produce the headline 2020→present result. The guiding principle
+throughout: **nothing about the strategy was tuned on post-2020 data.**
 
 ---
 
@@ -37,8 +37,8 @@ trading day**. No same-bar execution, no short positions.
 ### Universe (fixed ex-ante)
 
 All ETFs with inception ≤ mid-2007, mirroring the classic multi-asset universes
-in the pre-2020 literature (Faber's GTAA, Butler et al.'s Adaptive Asset
-Allocation, Keller's PAA/VAA/BAA):
+in the literature (Faber's GTAA, Butler et al.'s Adaptive Asset Allocation,
+Keller's PAA/VAA; the defensive pool follows Keller's 2022 BAA):
 
 - **Risky (10):** SPY, QQQ, IWM, EFA, EEM, VNQ, TLT, LQD, GLD, DBC
 - **Defensive pool (3):** IEF, TIP, BIL
@@ -76,13 +76,15 @@ trend-following literature and the structural opposite of curve-fitting.
 
 ## 3. Anti-overfitting protocol
 
-The core discipline: **nothing about the strategy was chosen by looking at
+The core discipline: **no parameter or configuration was chosen by looking at
 post-2020 results.**
 
-1. **Rules & parameters from pre-2020 literature.** Every lookback (1/3/6/12m,
+1. **Rules & parameters from published literature.** Every lookback (1/3/6/12m,
    6/10/12m SMA ensemble, 21/63/126d vol ensemble), every mechanism (absolute
    momentum gate, canary breadth, inverse-vol weighting, vol targeting) is a
    standard published value — none was searched over any data in this repo.
+   All of it predates 2020 except the BAA (2022) elements of the canary overlay
+   and the defensive pool; see the caveats below.
 2. **No data-driven selection at all.** The configuration is a fixed *neutral
    prior*, chosen a priori: equal blend of the two sleeves (mix = 0.5), graded
    canary, and breadth of half the risky universe (top-N = 5). We deliberately do
@@ -110,6 +112,12 @@ post-2020 results.**
 
 ### Known residual caveats
 
+- **Two components draw on a post-2020 paper.** The canary overlay and the
+  defensive pool {IEF, TIP, BIL} follow Keller's 2022 *Bold Asset Allocation*
+  (BAA) paper, which appeared after part of the evaluation window had already
+  happened. No parameter here was tuned on 2020→present, but for these components
+  the evaluation is not strictly out-of-sample; treat the headline as
+  pseudo-out-of-sample.
 - The universe, while standard in pre-2020 papers, is still specified with
   hindsight knowledge that these ETFs survived; single-name survivorship is not
   an issue (broad index ETFs), but "ETF asset-class coverage" itself is a

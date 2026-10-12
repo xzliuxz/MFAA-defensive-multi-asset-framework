@@ -7,10 +7,12 @@
 **A defensive, multi-asset allocation framework with an honest, anti-overfitting
 research harness.**
 
-MFAA is a long-only, monthly, price-only ETF strategy built entirely from factors
-published *before 2020* — cross-sectional "13612" momentum, ensembled trend
-following, a breadth "canary" crash overlay, inverse-volatility weighting and
-volatility targeting. It is designed to be a **defensive sleeve / diversifier**:
+MFAA is a long-only, monthly, price-only ETF strategy built from published factors
+— cross-sectional "13612" momentum, ensembled trend following, a breadth "canary"
+crash overlay, inverse-volatility weighting and volatility targeting. Almost all of
+it was published *before 2020*; the exception is that the canary overlay and the
+defensive pool also draw on Keller's 2022 BAA paper (see the
+[caveats](docs/methodology.md#known-residual-caveats)). It is designed to be a **defensive sleeve / diversifier**:
 roughly half the volatility and drawdown of equities, low beta, and strong
 behaviour in crises — not a return- or Sharpe-maximiser.
 
@@ -22,7 +24,9 @@ see exactly how much to trust it.
 
 ## Out-of-sample performance (2020-01 → 2026-07, after 10 bps costs)
 
-Fixed neutral-prior configuration, evaluated **once** on data never used to design it:
+Fixed neutral-prior configuration, evaluated **once** on a period never used to tune it.
+Two components follow a paper published in 2022, so this is not strictly
+out-of-sample (see the caveats):
 
 | Metric | **MFAA** | SPY | 60/40 |
 |--------|---------:|----:|------:|
@@ -57,7 +61,8 @@ Fixed neutral-prior configuration, evaluated **once** on data never used to desi
 Most backtests you find are in-sample fits. This one is built the other way:
 
 - **No parameter tuned on 2020→now.** Every lookback and threshold comes from
-  pre-2020 literature.
+  published research — pre-2020, except the BAA (2022) elements of the canary
+  overlay and the defensive pool.
 - **Ensembling instead of magic numbers.** Trend averages over {6,10,12}-month
   SMAs; volatility over {21,63,126} days. Sensitivity analysis shows swapping the
   ensemble for any single lookback barely moves the result.
